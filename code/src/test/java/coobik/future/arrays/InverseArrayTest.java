@@ -1,5 +1,7 @@
 package coobik.future.arrays;
 
+import java.util.Random;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -32,7 +34,15 @@ public class InverseArrayTest {
         array = prepareStringArray(10);
         inverseArrayAndCheck(array);
 
+        array = prepareStringArray(10);
+        setRandomNullElement(array);
+        inverseArrayAndCheck(array);
+
         array = prepareStringArray(11);
+        inverseArrayAndCheck(array);
+
+        array = prepareStringArray(11);
+        setRandomNullElement(array);
         inverseArrayAndCheck(array);
 
         array = prepareStringArray(20);
@@ -91,6 +101,11 @@ public class InverseArrayTest {
             int mirrorIndex = getMirrorIndex(inversedArray, i);
             Assert.assertEquals(originalArray[i], inversedArray[mirrorIndex]);
         }
+    }
+
+    private static void setRandomNullElement(Object[] array) {
+        int indexOfNull = (new Random()).nextInt(array.length);
+        array[indexOfNull] = null;
     }
 
     private static String[] prepareStringArray(int length) {
