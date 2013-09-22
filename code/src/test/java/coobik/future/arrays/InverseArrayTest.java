@@ -6,6 +6,12 @@ import org.testng.annotations.Test;
 
 public class InverseArrayTest {
 
+    @Test(expectedExceptions = { NullPointerException.class })
+    public void checkInverseNullArray() {
+        Object[] array = null;
+        inverseArray(array);
+    }
+
     @Test
     public void checkInverseStringArray() {
         String[] array = prepareStringArray(0);
